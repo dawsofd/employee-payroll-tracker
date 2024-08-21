@@ -1,6 +1,8 @@
 # employee-payroll-tracker
 UCB-VIRT-FSF-PT-07-2024-U-LOLC homework assignment #3
 
+![Link to deployed application](https://dawsofd.github.io/employee-payroll-tracker)
+
 ## User Story
 
 ```md

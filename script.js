@@ -3,40 +3,46 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 const collectEmployees = function() {
-  const employeeData = [];
+  const employeesArray = [];
+  let addAnother = true;
 
-  while(addEmployeesBtn) {
-    const collectFirst = prompt("Enter first name:");
-    const collectLast = prompt("Enter last name:");
-    let collectSalary = prompt("Enter Salary:");
+  while(addAnother) {
+    const firstName = prompt("Enter first name:");
+    const lastName = prompt("Enter last name:");
+    let salary = prompt("Enter Salary:");
     
-    collectSalary = isNaN(Number(collectSalary)) ? 0 : Number(collectSalary);
+    salary = isNaN(Number(salary)) ? 0 : Number(salary);
 
     const employee = {
-      collectFirst: collectFirst,
-      collectLast: collectLast,
-      collectSalary: collectSalary,
+      firstName: firstName,
+      lastName: lastName,
+      salary: salary,
     };
 
-    employeeData.push(employee);
+    employeesArray.push(employee);
 
-    const addAnother = confirm("Add additional employee?")
-    if (!addAnother) {
-      addEmployeesBtn = false;
+    const confirmAdding = confirm("Do you want to add another employee?")
+    if (!confirmAdding) {
+      addAnother = false;
     }
   }
-return employeeData;
+return employeesArray;
+
 }
 
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
+  const sumSalary = employeesArray.reduce((acc, employee) => acc + employee.salary, 0);
+  const averageSalary = sumSalary / employeesArray.length;
+  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalary}`)
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
+  const randomEmployeeIndex = Math.floor(Math.random() * employeesArray.length);
+  const randomEmployee = employeesArray[randomEmployeeIndex];
+  console.log(`Congratulatons to ${randomEmployee.firstName} ${randomEmployee.lastName}, our random drawing winner!`);
 }
 
 /*
